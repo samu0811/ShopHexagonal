@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Detalle de categoría')}"></head>
+<body>
+<nav th:replace="~{fragments/layout :: menu}"></nav>
+
+<div class="container" style="max-width: 700px;">
+    <h2>Detalle de la categoría</h2>
+
+    <dl class="row">
+        <dt class="col-sm-3">ID</dt>
+        <dd class="col-sm-9" th:text="${categoria.id}"></dd>
+        <dt class="col-sm-3">Nombre</dt>
+        <dd class="col-sm-9" th:text="${categoria.nombre}"></dd>
+        <dt class="col-sm-3">Descripción</dt>
+        <dd class="col-sm-9" th:text="${categoria.descripcion}"></dd>
+    </dl>
+
+    <a class="btn btn-warning" th:href="@{/categorias/editar/{id}(id=${categoria.id})}">Editar</a>
+    <a class="btn btn-secondary" th:href="@{/categorias}">Volver</a>
+</div>
+</body>
+</html>

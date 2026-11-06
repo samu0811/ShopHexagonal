@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Productos')}"></head>
+<body>
+<nav th:replace="~{fragments/layout :: menu}"></nav>
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Productos</h2>
+        <a class="btn btn-primary" th:href="@{/productos/nuevo}">Nuevo producto</a>
+    </div>
+
+    <div th:replace="~{fragments/layout :: mensajes}"></div>
+
+    <table class="table table-striped table-bordered align-middle">
+        <thead class="table-dark">
+        <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Categoría</th>
+            <th>Marca</th>
+            <th>Talla</th>
+            <th>Color</th>
+            <th>Precio</th>
+            <th>Cantidad Disponible</th>
+            <th style="width: 260px;">Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="p : ${productos}">
+            <td th:text="${p.codigo}"></td>
+            <td th:text="${p.nombre}"></td>
+            <td th:text="${p.categoria.nombre}"></td>
+            <td th:text="${p.marca}"></td>
+            <td th:text="${p.talla}"></td>
+            <td th:text="${p.color}"></td>
+            <td th:text="${#numbers.formatDecimal(p.precio, 1, 'POINT', 3, 'COMMA')}"></td>
+            <td>
+                <span th:if="${p.cantidadDisponible > 0}" th:text="${p.cantidadDisponible}"></span>
+                <span th:if="${p.cantidadDisponible == 0}" class="badge bg-secondary">Agotado</span>
+            </td>
+            <td>
+                <a class="btn btn-sm btn-info" th:href="@{/productos/{id}(id=${p.id})}">Ver</a>
+                <a class="btn btn-sm btn-warning" th:href="@{/productos/editar/{id}(id=${p.id})}">Editar</a>
+                <form class="d-inline" th:action="@{/productos/eliminar/{id}(id=${p.id})}" method="post"
+                      onsubmit="return confirm('¿Eliminar este producto?');">
+                    <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(productos)}">
+            <td colspan="9" class="text-center text-muted">No hay productos registrados</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

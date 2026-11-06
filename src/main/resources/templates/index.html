@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Inicio')}"></head>
+<body>
+<nav th:replace="~{fragments/layout :: menu}"></nav>
+
+<div class="container">
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <h1 class="display-6">Sistema de gestión y venta para tienda de ropa</h1>
+        <p class="lead">Aplicación web con arquitectura MVC, Spring Boot y MySQL.</p>
+        <a class="btn btn-primary" th:href="@{/productos}">Ver productos</a>
+        <a class="btn btn-outline-secondary" th:href="@{/categorias}">Ver categorías</a>
+    </div>
+</div>
+</body>
+</html>
