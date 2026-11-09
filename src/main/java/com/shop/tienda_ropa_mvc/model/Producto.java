@@ -17,6 +17,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
+
 @Entity
 @Table(name = "Productos")
 public class Producto {
@@ -67,7 +68,7 @@ public class Producto {
 
     @NotNull(message = "Debe elegir una categoria ")
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "categoria_id")
+    @JoinColumn(name = "categoria_id", nullable = false)
     private Categoria categoria;
 
     public Producto() {
