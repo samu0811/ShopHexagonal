@@ -1,4 +1,4 @@
-package com.shop.tienda_ropa_mvc.controller;
+package com.shop.tienda_ropa.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,10 +1,11 @@
-package com.shop.tienda_ropa_mvc.repository;
+package com.shop.tienda_ropa.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.shop.tienda_ropa_mvc.model.Producto;
+import com.shop.tienda_ropa.model.Producto;
+
 import java.util.List;
 import java.util.Optional;
 

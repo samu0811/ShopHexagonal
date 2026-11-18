@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.shop</groupId>
-	<artifactId>tienda-ropa-mvc</artifactId>
+	<artifactId>tienda-ropa-hexagonal</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>tienda-ropa-mvc</name>
-	<description/>
+	<name>tienda-ropa-hexagonal</name>
+	<description>Tienda de ropa con arquitectura hexagonal</description>
 	<url/>
 	<licenses>
 		<license/>

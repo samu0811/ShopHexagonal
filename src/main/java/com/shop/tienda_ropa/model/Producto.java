@@ -1,4 +1,4 @@
-package com.shop.tienda_ropa_mvc.model;
+package com.shop.tienda_ropa.model;
 
 import java.math.BigDecimal;
 

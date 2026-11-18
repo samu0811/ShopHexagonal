@@ -1,13 +1,13 @@
-package com.shop.tienda_ropa_mvc;
+package com.shop.tienda_ropa;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TiendaRopaMvcApplication {
+public class TiendaRopaApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TiendaRopaMvcApplication.class, args);
+		SpringApplication.run(TiendaRopaApplication.class, args);
 	}
 
 }

@@ -1,12 +1,9 @@
-package com.shop.tienda_ropa_mvc.controller;
+package com.shop.tienda_ropa.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.shop.tienda_ropa_mvc.model.Categoria;
-import com.shop.tienda_ropa_mvc.service.CategoriaServicio;
 
 import jakarta.validation.Valid;
 
@@ -14,6 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.shop.tienda_ropa.model.Categoria;
+import com.shop.tienda_ropa.service.CategoriaServicio;
+
 import org.springframework.web.bind.annotation.PostMapping;
 
 

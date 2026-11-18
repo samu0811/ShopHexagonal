@@ -1,4 +1,4 @@
-package com.shop.tienda_ropa_mvc.service;
+package com.shop.tienda_ropa.service;
 
 
 import java.util.List;
@@ -8,9 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.shop.tienda_ropa_mvc.model.Categoria;
-import com.shop.tienda_ropa_mvc.repository.CategoriaRepository;
-import com.shop.tienda_ropa_mvc.repository.ProductoRepository;
+import com.shop.tienda_ropa.model.Categoria;
+import com.shop.tienda_ropa.repository.CategoriaRepository;
+import com.shop.tienda_ropa.repository.ProductoRepository;
 
 @Service 
 public class CategoriaServicio {

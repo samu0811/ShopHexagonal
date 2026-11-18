@@ -1,7 +1,7 @@
-package com.shop.tienda_ropa_mvc.repository;
+package com.shop.tienda_ropa.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.shop.tienda_ropa_mvc.model.Categoria;
+import com.shop.tienda_ropa.model.Categoria;
 
 public interface CategoriaRepository extends JpaRepository<Categoria, Long> {
 
