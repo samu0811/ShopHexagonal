@@ -27,6 +27,7 @@ public class ProductoForm {
     @Size(max=255, message = "La descripcion no puede sobre pasar 255 caracteres")
     private String descripcion;
 
+    @NotBlank(message = "la marca es obligatoria")
     @Size(max = 60, message = "La marca no puede superar los 60 caracteres")
     private String marca;
 
@@ -35,9 +36,11 @@ public class ProductoForm {
     @Digits(integer = 10, fraction = 2, message = "El precio admite máximo 2 decimales")
     private BigDecimal precio;
 
+    @NotBlank(message = "La talla es obligatoria")
     @Size(max = 10, message = "La talla no puede superar los 10 caracteres")
     private String talla;
 
+    @NotBlank(message = "El color es obligatorio")
     @Size(max = 20, message = "El color no puede superar los 20 caracteres")
     private String color;
 
