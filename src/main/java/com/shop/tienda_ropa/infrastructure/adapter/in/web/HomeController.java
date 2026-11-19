@@ -1,13 +1,15 @@
-package com.shop.tienda_ropa.controller;
+package com.shop.tienda_ropa.infrastructure.adapter.in.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@Controller 
-public class Homecontroller {
 
+@Controller 
+public class HomeController {
+    
     @GetMapping("/")
-    public String index(){
+    public String inicio() {
         return "index";
     }
+    
 }

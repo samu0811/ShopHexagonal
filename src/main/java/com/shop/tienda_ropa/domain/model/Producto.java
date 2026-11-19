@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class Producto {
 
-    private long id;
+    private Long id;
     private String codigo;
     private String nombre;
     private String descripcion;

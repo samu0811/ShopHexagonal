@@ -1,95 +1,98 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
+
 <head th:replace="~{fragments/layout :: head('Producto')}"></head>
+
 <body>
-<nav th:replace="~{fragments/layout :: menu}"></nav>
+    <nav th:replace="~{fragments/layout :: menu}"></nav>
 
-<div class="container" style="max-width: 800px;">
-    <h2 th:text="${producto.id == null} ? 'Nuevo producto' : 'Editar producto'"></h2>
+    <div class="container" style="max-width: 800px;">
+        <h2 th:text="${producto.id == null} ? 'Nuevo producto' : 'Editar producto'"></h2>
 
-    <form th:action="@{/productos/guardar}" th:object="${producto}" method="post">
-        <input type="hidden" th:field="*{id}">
+        <form th:action="@{/productos/guardar}" th:object="${producto}" method="post">
+            <input type="hidden" th:field="*{id}">
 
-        <div class="row">
-            <div class="col-md-4 mb-3">
-                <label class="form-label" for="codigo">Código</label>
-                <input type="text" class="form-control" id="codigo" th:field="*{codigo}"
-                       th:classappend="${#fields.hasErrors('codigo')} ? 'is-invalid'">
-                <div class="invalid-feedback" th:errors="*{codigo}"></div>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label class="form-label" for="codigo">Código</label>
+                    <input type="text" class="form-control" id="codigo" th:field="*{codigo}"
+                        th:classappend="${#fields.hasErrors('codigo')} ? 'is-invalid'">
+                    <div class="invalid-feedback" th:errors="*{codigo}"></div>
+                </div>
+                <div class="col-md-8 mb-3">
+                    <label class="form-label" for="nombre">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" th:field="*{nombre}"
+                        th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid'">
+                    <div class="invalid-feedback" th:errors="*{nombre}"></div>
+                </div>
             </div>
-            <div class="col-md-8 mb-3">
-                <label class="form-label" for="nombre">Nombre</label>
-                <input type="text" class="form-control" id="nombre" th:field="*{nombre}"
-                       th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid'">
-                <div class="invalid-feedback" th:errors="*{nombre}"></div>
+
+            <div class="mb-3">
+                <label class="form-label" for="descripcion">Descripción</label>
+                <textarea class="form-control" id="descripcion" rows="2" th:field="*{descripcion}"
+                    th:classappend="${#fields.hasErrors('descripcion')} ? 'is-invalid'"></textarea>
+                <div class="invalid-feedback" th:errors="*{descripcion}"></div>
             </div>
-        </div>
 
-        <div class="mb-3">
-            <label class="form-label" for="descripcion">Descripción</label>
-            <textarea class="form-control" id="descripcion" rows="2" th:field="*{descripcion}"
-                      th:classappend="${#fields.hasErrors('descripcion')} ? 'is-invalid'"></textarea>
-            <div class="invalid-feedback" th:errors="*{descripcion}"></div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <label class="form-label" for="categoria">Categoría</label>
-                <select class="form-select" id="categoria" th:field="*{categoria.id}"
-                        th:classappend="${#fields.hasErrors('categoria.id') or #fields.hasErrors('categoria')} ? 'is-invalid'">
-                    <option value="">-- Seleccione --</option>
-                    <option th:each="c : ${categorias}" th:value="${c.id}" th:text="${c.nombre}"></option>
-                </select>
-                <div class="invalid-feedback"
-                     th:if="${#fields.hasErrors('categoria.id')}" th:errors="*{categoria.id}"></div>
-                <div class="invalid-feedback"
-                     th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}"></div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label" for="categoriaId">Categoría</label>
+                    <select class="form-select" id="categoriaId" th:field="*{categoriaId}"
+                        th:classappend="${#fields.hasErrors('categoriaId')} ? 'is-invalid'">
+                        <option value="">-- Seleccione --</option>
+                        <option th:each="c : ${categorias}" th:value="${c.id}" th:text="${c.nombre}"></option>
+                    </select>
+                    <div class="invalid-feedback" th:errors="*{categoriaId}"></div>
+                </div>
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('categoriaId')}" th:errors="*{categoriaId}">
+                </div>
             </div>
             <div class="col-md-6 mb-3">
                 <label class="form-label" for="marca">Marca</label>
                 <input type="text" class="form-control" id="marca" th:field="*{marca}"
-                       th:classappend="${#fields.hasErrors('marca')} ? 'is-invalid'">
+                    th:classappend="${#fields.hasErrors('marca')} ? 'is-invalid'">
                 <div class="invalid-feedback" th:errors="*{marca}"></div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-3 mb-3">
-                <label class="form-label" for="talla">Talla</label>
-                <input type="text" class="form-control" id="talla" th:field="*{talla}"
-                       th:classappend="${#fields.hasErrors('talla')} ? 'is-invalid'">
-                <div class="invalid-feedback" th:errors="*{talla}"></div>
-            </div>
-            <div class="col-md-3 mb-3">
-                <label class="form-label" for="color">Color</label>
-                <input type="text" class="form-control" id="color" th:field="*{color}"
-                       th:classappend="${#fields.hasErrors('color')} ? 'is-invalid'">
-                <div class="invalid-feedback" th:errors="*{color}"></div>
-            </div>
-            <div class="col-md-3 mb-3">
-                <label class="form-label" for="precio">Precio</label>
-                <input type="number" step="0.01" class="form-control" id="precio" th:field="*{precio}"
-                       th:classappend="${#fields.hasErrors('precio')} ? 'is-invalid'">
-                <div class="invalid-feedback" th:errors="*{precio}"></div>
-            </div>
-            <div class="col-md-3 mb-3">
-                <label class="form-label" for="cantidadDisponible">Cantidad</label>
-                <input type="number" class="form-control" id="cantidadDisponible" th:field="*{cantidadDisponible}"
-                       th:classappend="${#fields.hasErrors('cantidadDisponible')} ? 'is-invalid'">
-                <div class="invalid-feedback" th:errors="*{cantidadDisponible}"></div>
-            </div>
-        </div>
 
-        <div class="mb-3">
-            <label class="form-label" for="imagenUrl">URL de la imagen</label>
-            <input type="text" class="form-control" id="imagenUrl" th:field="*{imagenUrl}"
-                   th:classappend="${#fields.hasErrors('imagenUrl')} ? 'is-invalid'">
-            <div class="invalid-feedback" th:errors="*{imagenUrl}"></div>
-        </div>
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <label class="form-label" for="talla">Talla</label>
+                    <input type="text" class="form-control" id="talla" th:field="*{talla}"
+                        th:classappend="${#fields.hasErrors('talla')} ? 'is-invalid'">
+                    <div class="invalid-feedback" th:errors="*{talla}"></div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label class="form-label" for="color">Color</label>
+                    <input type="text" class="form-control" id="color" th:field="*{color}"
+                        th:classappend="${#fields.hasErrors('color')} ? 'is-invalid'">
+                    <div class="invalid-feedback" th:errors="*{color}"></div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label class="form-label" for="precio">Precio</label>
+                    <input type="number" step="0.01" class="form-control" id="precio" th:field="*{precio}"
+                        th:classappend="${#fields.hasErrors('precio')} ? 'is-invalid'">
+                    <div class="invalid-feedback" th:errors="*{precio}"></div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label class="form-label" for="cantidadDisponible">Cantidad</label>
+                    <input type="number" class="form-control" id="cantidadDisponible" th:field="*{cantidadDisponible}"
+                        th:classappend="${#fields.hasErrors('cantidadDisponible')} ? 'is-invalid'">
+                    <div class="invalid-feedback" th:errors="*{cantidadDisponible}"></div>
+                </div>
+            </div>
 
-        <button type="submit" class="btn btn-primary">Guardar</button>
-        <a class="btn btn-secondary" th:href="@{/productos}">Cancelar</a>
-    </form>
-</div>
+            <div class="mb-3">
+                <label class="form-label" for="imagenUrl">URL de la imagen</label>
+                <input type="text" class="form-control" id="imagenUrl" th:field="*{imagenUrl}"
+                    th:classappend="${#fields.hasErrors('imagenUrl')} ? 'is-invalid'">
+                <div class="invalid-feedback" th:errors="*{imagenUrl}"></div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a class="btn btn-secondary" th:href="@{/productos}">Cancelar</a>
+        </form>
+    </div>
 </body>
+
 </html>

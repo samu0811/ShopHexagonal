@@ -3,6 +3,7 @@ package com.shop.tienda_ropa.infrastructure.adapter.out.persistence;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 
 import com.shop.tienda_ropa.domain.model.Producto;
@@ -21,7 +22,7 @@ public class ProductoPersistenceAdapter implements ProductoRepositoryPort{
 
     @Override 
     public List<Producto> buscarTodos(){
-        return jpaRepository.findAll().stream().map(mapper::toDomain).toList();
+        return jpaRepository.findAll(Sort.by("nombre")).stream().map(mapper::toDomain).toList();
     }
 
     @Override 

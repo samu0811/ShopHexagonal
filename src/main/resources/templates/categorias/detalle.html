@@ -1,23 +1,47 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
+
 <head th:replace="~{fragments/layout :: head('Detalle de categoría')}"></head>
+
 <body>
-<nav th:replace="~{fragments/layout :: menu}"></nav>
+    <nav th:replace="~{fragments/layout :: menu}"></nav>
 
-<div class="container" style="max-width: 700px;">
-    <h2>Detalle de la categoría</h2>
+    <div class="container" style="max-width: 700px;">
+        <h2>Detalle de la categoría</h2>
 
-    <dl class="row">
-        <dt class="col-sm-3">ID</dt>
-        <dd class="col-sm-9" th:text="${categoria.id}"></dd>
-        <dt class="col-sm-3">Nombre</dt>
-        <dd class="col-sm-9" th:text="${categoria.nombre}"></dd>
-        <dt class="col-sm-3">Descripción</dt>
-        <dd class="col-sm-9" th:text="${categoria.descripcion}"></dd>
-    </dl>
+        <dl class="row">
+            <dt class="col-sm-3">ID</dt>
+            <dd class="col-sm-9" th:text="${categoria.id}"></dd>
+            <dt class="col-sm-3">Nombre</dt>
+            <dd class="col-sm-9" th:text="${categoria.nombre}"></dd>
+            <dt class="col-sm-3">Descripción</dt>
+            <dd class="col-sm-9" th:text="${categoria.descripcion}"></dd>
+        </dl>
+        
+        <h5 class="mt-4">Productos de esta categoría</h5>
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="p : ${productos}">
+                    <td th:text="${p.codigo}"></td>
+                    <td th:text="${p.nombre}"></td>
+                    <td th:text="${#numbers.formatDecimal(p.precio, 1, 'POINT', 2, 'COMMA')}"></td>
+                </tr>
+                <tr th:if="${#lists.isEmpty(productos)}">
+                    <td colspan="3" class="text-muted">Esta categoría no tiene productos</td>
+                </tr>
+            </tbody>
+        </table>
 
-    <a class="btn btn-warning" th:href="@{/categorias/editar/{id}(id=${categoria.id})}">Editar</a>
-    <a class="btn btn-secondary" th:href="@{/categorias}">Volver</a>
-</div>
+        <a class="btn btn-warning" th:href="@{/categorias/editar/{id}(id=${categoria.id})}">Editar</a>
+        <a class="btn btn-secondary" th:href="@{/categorias}">Volver</a>
+    </div>
 </body>
+
 </html>
