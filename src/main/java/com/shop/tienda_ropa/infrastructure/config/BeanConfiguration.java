@@ -5,10 +5,13 @@ import org.springframework.context.annotation.Configuration;
 
 import com.shop.tienda_ropa.application.service.CategoriaService;
 import com.shop.tienda_ropa.application.service.ProductoService;
+import com.shop.tienda_ropa.application.service.UsuariosService;
 import com.shop.tienda_ropa.domain.port.in.CategoriaUseCase;
 import com.shop.tienda_ropa.domain.port.in.ProductoUseCase;
+import com.shop.tienda_ropa.domain.port.in.UsuariosUseCase;
 import com.shop.tienda_ropa.domain.port.out.CategoriaRepositoryPort;
 import com.shop.tienda_ropa.domain.port.out.ProductoRepositoryPort;
+import com.shop.tienda_ropa.domain.port.out.UsuariosRepositoryPort;
 
 @Configuration 
 public class BeanConfiguration {
@@ -23,4 +26,10 @@ public class BeanConfiguration {
     public ProductoUseCase productoUseCase(ProductoRepositoryPort productoRepository, CategoriaRepositoryPort categoriaRepository){
         return new ProductoService(categoriaRepository, productoRepository);
     }
+
+    @Bean 
+    public UsuariosUseCase usuariosUseCase(UsuariosRepositoryPort usuariosRepository){
+        return new UsuariosService(usuariosRepository);
+    }
+
 }

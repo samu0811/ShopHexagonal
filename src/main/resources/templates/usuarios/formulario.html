@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/layout :: head('Usuarios')}"></head>
+
+<body>
+    <nav th:replace="~{fragments/layout :: menu}"></nav>
+
+    <div class="container" style="max-width: 800px;">
+        <h2 th:text="${usuarios.id == null} ? 'Nuevo usuario' : 'Editar usuario'"></h2>
+
+        <form th:action="@{/usuarios/guardar}" th:object="${usuarios}" method="post">
+            <input type="hidden" th:field="*{id}">
+
+            <div class="row">
+                <div class="col-md-8 mb-3">
+                    <label class="form-label" for="nombre">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" th:field="*{nombre}"
+                        th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid'">
+                    <div class="invalid-feedback" th:errors="*{nombre}"></div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="documento">Documento</label>
+                <textarea class="form-control" id="documento" rows="2" th:field="*{documento}"
+                    th:classappend="${#fields.hasErrors('documento')} ? 'is-invalid'"></textarea>
+                <div class="invalid-feedback" th:errors="*{documento}"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <label class="form-label" for="email">Email</label>
+                    <input type="text" class="form-control" id="email" th:field="*{email}"
+                        th:classappend="${#fields.hasErrors('email')} ? 'is-invalid'">
+                    <div class="invalid-feedback" th:errors="*{email}"></div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label class="form-label" for="celular">Celular</label>
+                    <input type="text" class="form-control" id="celular" th:field="*{celular}"
+                        th:classappend="${#fields.hasErrors('celular')} ? 'is-invalid'">
+                    <div class="invalid-feedback" th:errors="*{celular}"></div>
+                </div>
+
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a class="btn btn-secondary" th:href="@{/usuarios}">Cancelar</a>
+        </form>
+    </div>
+</body>
+
+</html>
